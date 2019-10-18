@@ -1,13 +1,30 @@
- //declare bacteria variables here   
+Bacteria jim = new Bacteria (50,50);
  void setup()   
  {     
- 	//initialize bacteria variables here   
+    size(500, 500);
  }   
  void draw()   
  {    
- 	//move and show the bacteria   
+    background (0);
+    jim.show();
+    jim.move();
  }  
  class Bacteria    
  {     
- 	//lots of java!   
+ 	int myX, myY;
+ 	Bacteria( int x, int y )
+ 	{
+ 		myX = x;
+ 		myY = y;
+ 	}
+ 	void move()
+ 	{
+ 		myX = myX + (int)(Math.random()*4)-1;
+ 		myY = myY + (int)(Math.random()*4)-1;
+ 	}
+ 	void show()
+ 	{
+ 	fill((int)(Math.random()*250),(int)(Math.random()*250),(int)(Math.random()*250));
+ 	ellipse(myX, myY, 10, 10);
+ 	}
  }    
