@@ -1,30 +1,45 @@
-Bacteria jim = new Bacteria (50,50);
+
+Bacteria[] pam;
  void setup()   
  {     
     size(500, 500);
+    pam = new Bacteria [1000];
+    for(int i = 0; i < pam.length; i++){
+    	pam [i] = new Bacteria();
+    }
  }   
  void draw()   
  {    
     background (0);
-    jim.show();
-    jim.move();
+    for(int i = 0; i < pam.length; i++){
+    pam[i].move();
+    pam[i].show();
+	}
  }  
  class Bacteria    
  {     
- 	int myX, myY;
- 	Bacteria( int x, int y )
+ 	int myX, myY, myColor;
+ 	Bacteria( )
  	{
- 		myX = x;
- 		myY = y;
+ 		myX = 100;
+ 		myY = 100;
+ 		myColor = color((int)(Math.random()*250),(int)(Math.random()*250),(int)(Math.random()*250));
  	}
  	void move()
  	{
- 		myX = myX + (int)(Math.random()*4)-1;
- 		myY = myY + (int)(Math.random()*4)-1;
+ 		if(mouseX>myX)
+ 			myX = myX + (int)(Math.random()*4)-1;
+ 		else
+ 			myX = myX + (int)(Math.random()*4)-3;
+ 		if(mouseY>myY)
+ 			myY = myY + (int)(Math.random()*4)-1;
+ 		else
+ 			myY = myY + (int)(Math.random()*4)-3;
  	}
  	void show()
  	{
- 	fill((int)(Math.random()*250),(int)(Math.random()*250),(int)(Math.random()*250));
+ 	fill(myColor);
+ 	noStroke();
  	ellipse(myX, myY, 10, 10);
  	}
  }    
